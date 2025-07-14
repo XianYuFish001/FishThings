@@ -9,5 +9,9 @@
   "message.item.fish_things.super_tool.superTree.finished": "§a[超级砍树]§f 砍树完成",
   "message.item.fish_things.super_tool.superOre.finished": "§a[超级采矿]§f 采集完成，共采集 %s 个矿石",
 
-  "ctab.fish_things.maintab": "Fish的妙妙物品"
+  "ctab.fish_things.maintab": "Fish的妙妙物品",
+
+  "config.fish_things.max_log_count": "最大树干连锁数",
+  "config.fish_things.max_leaf_count": "最大树叶连锁数",
+  "config.fish_things.max_ore_count": "最大原矿连锁数"
 }

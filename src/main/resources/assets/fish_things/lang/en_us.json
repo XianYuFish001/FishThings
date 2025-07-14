@@ -1,13 +1,17 @@
 {
-  "itemGroup.fish_things": "Example Mod Tab",
-  "block.fish_things.example_block": "Example Block",
-  "item.fish_things.example_item": "Example Item",
+  "item.fish_things.super_tool": "SuperTool",
 
-  "fish_things.configuration.title": "FishThings Configs",
-  "fish_things.configuration.section.fish_things.common.toml": "FishThings Configs",
-  "fish_things.configuration.section.fish_things.common.toml.title": "FishThings Configs",
-  "fish_things.configuration.items": "Item List",
-  "fish_things.configuration.logDirtBlock": "Log Dirt Block",
-  "fish_things.configuration.magicNumberIntroduction": "Magic Number Text",
-  "fish_things.configuration.magicNumber": "Magic Number"
+  "message.actionbar.item.fish_things.super_tool.disabled": "§7§l§oSuperTool §7§lDisabled",
+  "message.actionbar.item.fish_things.super_tool.superTree": "§f§l§oSuperTool §a§lSuperTree",
+  "message.actionbar.item.fish_things.super_tool.superOre": "§f§l§oSuperTool §a§lSuperOre",
+
+  "message.item.fish_things.super_tool.superTree.isnt_tree": "§c[SuperTree]§f Can't find the tree.",
+  "message.item.fish_things.super_tool.superTree.finished": "§a[SuperTree]§f Tree-choping finished.",
+  "message.item.fish_things.super_tool.superOre.finished": "§a[SuperOre]§f Mine finished, mined %s ores",
+
+  "ctab.fish_things.maintab": "FishThings",
+
+  "config.fish_things.max_log_count": "The maximum count of chain logs destroying",
+  "config.fish_things.max_leaf_count": "The maximum count of chain leaves destroying",
+  "config.fish_things.max_ore_count": "The maximum count of chain ores destroying"
 }

@@ -17,9 +17,7 @@ public class creativeTab {
     public static final Supplier<CreativeModeTab> MAINTAB = CTAB.register("main_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable(TAB))
             .icon(() -> modItems.SUPER_TOOL.get().getDefaultInstance())
-            .displayItems((p, o) -> {
-                o.accept(modItems.SUPER_TOOL.get());
-            })
+            .displayItems((p, o) -> o.accept(modItems.SUPER_TOOL.get()))
             .build());
 
     public static void register(IEventBus eventBus) {
