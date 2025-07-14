@@ -2,6 +2,7 @@ package com.fish.fishthings.item.customs.superTool;
 
 import com.fish.fishthings.FishThings;
 import com.fish.fishthings.item.modItems;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +34,7 @@ public class superToolFunc {
     }
 
     private static void sendStatusMessage(Player player) {
-        Component superToolMode = switch (superTool.getMode(player)) {
+        Component superToolMode = switch (superTool.getMode(player.getMainHandItem())) {
             case superOre ->
                     Component.translatable("message.actionbar.item.fish_things.super_tool.superOre");
             case superTree ->
@@ -41,7 +42,7 @@ public class superToolFunc {
         };
 
         player.displayClientMessage(
-                !superTool.isToolEnabled(player) ?
+                !superTool.isToolEnabled(player.getMainHandItem()) ?
                         Component.translatable("message.actionbar.item.fish_things.super_tool.disabled") : superToolMode,
                 true
         );
@@ -52,12 +53,13 @@ public class superToolFunc {
         Player player = event.getEntity();
         ItemStack item = event.getItemStack();
         if (item.getItem() != modItems.SUPER_TOOL.get()) return;
-        if (superTool.isToolEnabled(player) && superTool.getMode(player) == superTool.ToolMode.superOre) {
+        if (superTool.isToolEnabled(player.getMainHandItem()) &&
+                superTool.getMode(player.getMainHandItem()) == superToolState.ToolMode.superOre) {
             superOre.superOreAreaFunc(event.getLevel(), event.getPos(), player, item);
         }
         if (isDebouncing(player)) return;
         if (player.isCrouching()) {
-            superTool.switchMode(player);
+            superTool.switchMode(player.getMainHandItem());
             sendStatusMessage(player);
         }
     }
@@ -67,17 +69,18 @@ public class superToolFunc {
         Player player = event.getEntity();
         ItemStack item = event.getItemStack();
         if (item.getItem() != modItems.SUPER_TOOL.get()) return;
-        if (superTool.isToolEnabled(player)) {
-            switch (superTool.getMode(player)) {
+        if (superTool.isToolEnabled(player.getMainHandItem())) {
+            switch (superTool.getMode(player.getMainHandItem())) {
                 case superOre -> superOre.superOreFunc(event.getLevel(), event.getPos(), player, item);
                 case superTree -> superTree.superTreeFunc(event.getLevel(), event.getPos(), player, item);
             }
         }
         if (isDebouncing(player)) return;
         if (player.isCrouching()) {
-            superTool.toggleToolEnabeld(player);
+            superTool.toggleToolEnabeld(player.getMainHandItem());
             sendStatusMessage(player);
         }
+        item.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, superTool.getState(item).isEnabled());
     }
 
     @SubscribeEvent
@@ -87,7 +90,7 @@ public class superToolFunc {
         if (item.getItem() != modItems.SUPER_TOOL.get()) return;
         if (isDebouncing(player)) return;
         if (player.isCrouching()) {
-            superTool.switchMode(player);
+            superTool.switchMode(player.getMainHandItem());
             sendStatusMessage(player);
         }
     }
@@ -98,8 +101,10 @@ public class superToolFunc {
         if (player.getMainHandItem().getItem() != modItems.SUPER_TOOL.get()) return;
         if (isDebouncing(player)) return;
         if (player.isCrouching()) {
-            superTool.toggleToolEnabeld(player);
+            superTool.toggleToolEnabeld(player.getMainHandItem());
             sendStatusMessage(player);
         }
+        player.getMainHandItem().set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,
+                superTool.getState(player.getMainHandItem()).isEnabled());
     }
 }

@@ -1,5 +1,6 @@
 package com.fish.fishthings.item.customs.superTool;
 
+import com.fish.fishthings.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -14,7 +15,7 @@ import net.neoforged.neoforge.common.Tags;
 import java.util.*;
 
 public class superOre {
-    private static final int MAX_CONNECTED = 512;
+    private static final int MAX_CONNECTED = Config.MAX_ORE_COUNT.getAsInt();
     private static final int CHUNK_SIZE = 16;
     // 26个方向（包括斜角）
     private static final BlockPos[] TWENTY_SIX_DIRECTIONS = new BlockPos[26];

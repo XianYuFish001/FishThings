@@ -1,11 +1,8 @@
 package com.fish.fishthings.item.customs.superTool;
 
-import net.minecraft.world.entity.player.Player;
+import com.fish.fishthings.item.modComponents;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public class superTool extends PickaxeItem {
 
@@ -14,40 +11,41 @@ public class superTool extends PickaxeItem {
                 .durability(1145)
                 .rarity(Rarity.RARE)
                 .fireResistant()
+                .component(modComponents.SUPER_TOOL_STATE.get(), superToolState.DEFAULT)
+                .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, superToolState.DEFAULT.isEnabled())
         );
     }
 
-    private static final Map<UUID, ToolMode> toolMode = new HashMap<>();
-    private static final Map<UUID, Boolean> isToolEnabled = new HashMap<>();
-    private static final ToolMode DEFAULT_MODE = ToolMode.superTree;
-    private static final Boolean DEFAULT_ENABLED = false;
-
-    public static ToolMode getMode(Player player) {
-        return toolMode.getOrDefault(player.getUUID(), DEFAULT_MODE);
+    public static superToolState getState(ItemStack item) {
+        return item.getOrDefault(modComponents.SUPER_TOOL_STATE.get(), superToolState.DEFAULT);
     }
 
-    public static void setMode(Player player, ToolMode mode) {
-        toolMode.put(player.getUUID(), mode);
+    public static void setState(ItemStack item, superToolState state) {
+        item.set(modComponents.SUPER_TOOL_STATE.get(), state);
     }
 
-    public static void switchMode(Player player) {
-        setMode(player, getMode(player) == ToolMode.superTree ? ToolMode.superOre : ToolMode.superTree);
+    public static superToolState.ToolMode getMode(ItemStack item) {
+        return getState(item).toolMode();
     }
 
-    public static boolean isToolEnabled(Player player) {
-        return isToolEnabled.getOrDefault(player.getUUID(), DEFAULT_ENABLED);
+    public static void setMode(ItemStack item, superToolState.ToolMode toolMode) {
+        setState(item, new superToolState(toolMode, getState(item).isEnabled()));
     }
 
-    public static void setToolEnabled(Player player, boolean isEnabled) {
-        isToolEnabled.put(player.getUUID(), isEnabled);
+    public static void switchMode(ItemStack item) {
+        setMode(item, getState(item).toolMode() ==
+                superToolState.ToolMode.superTree ? superToolState.ToolMode.superOre : superToolState.ToolMode.superTree);
     }
 
-    public static void toggleToolEnabeld(Player player) {
-        setToolEnabled(player, !isToolEnabled(player));
+    public static boolean isToolEnabled(ItemStack item) {
+        return getState(item).isEnabled();
     }
 
-    public enum ToolMode {
-        superTree,
-        superOre
+    public static void setToolEnabled(ItemStack item, boolean enabled) {
+        setState(item, new superToolState(getState(item).toolMode(), enabled));
+    }
+
+    public static void toggleToolEnabeld(ItemStack item) {
+        setToolEnabled(item, !getState(item).isEnabled());
     }
 }

@@ -1,6 +1,6 @@
-package com.fish.fishthings.item;
+package com.fish.fishthings;
 
-import com.fish.fishthings.FishThings;
+import com.fish.fishthings.item.modItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

@@ -1,5 +1,6 @@
 package com.fish.fishthings.item.customs.superTool;
 
+import com.fish.fishthings.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
@@ -18,8 +19,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.*;
 
 public class superTree {
-    private static final int MAX_LOG_COUNT = 1024;
-    private static final int MAX_LEAF_COUNT = 4096;
+    private static final int MAX_LOG_COUNT = Config.MAX_LOG_COUNT.getAsInt();
+    private static final int MAX_LEAF_COUNT = Config.MAX_LEAF_COUNT.getAsInt();
     // 26个方向（包括斜角）
     private static final BlockPos[] TWENTY_SIX_DIRECTIONS = new BlockPos[26];
 

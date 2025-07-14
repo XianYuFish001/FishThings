@@ -1,6 +1,6 @@
 package com.fish.fishthings;
 
-import com.fish.fishthings.item.creativeTab;
+import com.fish.fishthings.item.modComponents;
 import com.fish.fishthings.item.modItems;
 import org.slf4j.Logger;
 
@@ -27,6 +27,7 @@ public class FishThings {
 
         modItems.register(modEventBus);
         creativeTab.register(modEventBus);
+        modComponents.COMPONENTS.register(modEventBus);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
