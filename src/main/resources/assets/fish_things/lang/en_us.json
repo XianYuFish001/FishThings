@@ -1,0 +1,13 @@
+{
+  "itemGroup.fish_things": "Example Mod Tab",
+  "block.fish_things.example_block": "Example Block",
+  "item.fish_things.example_item": "Example Item",
+
+  "fish_things.configuration.title": "FishThings Configs",
+  "fish_things.configuration.section.fish_things.common.toml": "FishThings Configs",
+  "fish_things.configuration.section.fish_things.common.toml.title": "FishThings Configs",
+  "fish_things.configuration.items": "Item List",
+  "fish_things.configuration.logDirtBlock": "Log Dirt Block",
+  "fish_things.configuration.magicNumberIntroduction": "Magic Number Text",
+  "fish_things.configuration.magicNumber": "Magic Number"
+}

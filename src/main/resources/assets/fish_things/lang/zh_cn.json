@@ -1,0 +1,13 @@
+{
+  "item.fish_things.super_tool": "击败的\uD83E\uDD74超级\uD83D\uDE0B工具\uD83E\uDD13",
+
+  "message.actionbar.item.fish_things.super_tool.disabled": "§7§l§oSuperTool §7§l已禁用",
+  "message.actionbar.item.fish_things.super_tool.superTree": "§f§l§oSuperTool §a§l超级砍树",
+  "message.actionbar.item.fish_things.super_tool.superOre": "§f§l§oSuperTool §a§l超级采矿",
+
+  "message.item.fish_things.super_tool.superTree.isnt_tree": "§c[超级砍树]§f 树结构不完整",
+  "message.item.fish_things.super_tool.superTree.finished": "§a[超级砍树]§f 砍树完成",
+  "message.item.fish_things.super_tool.superOre.finished": "§a[超级采矿]§f 采集完成，共采集 %s 个矿石",
+
+  "ctab.fish_things.maintab": "Fish的妙妙物品"
+}
