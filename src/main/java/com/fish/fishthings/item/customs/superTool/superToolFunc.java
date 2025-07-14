@@ -23,7 +23,7 @@ public class superToolFunc {
 
     private static boolean isDebouncing(Player player) {
         UUID playerId = player.getUUID();
-        long currentTime = System.currentTimeMillis();
+        Long currentTime = System.currentTimeMillis();
         Long lastTime = lastActionTime.get(playerId);
 
         if (lastTime == null || currentTime - lastTime > DEBOUNCE_INTERVAL) {
@@ -70,6 +70,7 @@ public class superToolFunc {
         ItemStack item = event.getItemStack();
         if (item.getItem() != modItems.SUPER_TOOL.get()) return;
         if (superTool.isToolEnabled(player.getMainHandItem())) {
+            player.sendSystemMessage(Component.literal(event.getLevel().isClientSide()?"C":"S"));
             switch (superTool.getMode(player.getMainHandItem())) {
                 case superOre -> superOre.superOreFunc(event.getLevel(), event.getPos(), player, item);
                 case superTree -> superTree.superTreeFunc(event.getLevel(), event.getPos(), player, item);
@@ -83,28 +84,29 @@ public class superToolFunc {
         item.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, superTool.getState(item).isEnabled());
     }
 
-    @SubscribeEvent
-    public static void onLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
-        Player player = event.getEntity();
-        ItemStack item = event.getItemStack();
-        if (item.getItem() != modItems.SUPER_TOOL.get()) return;
-        if (isDebouncing(player)) return;
-        if (player.isCrouching()) {
-            superTool.switchMode(player.getMainHandItem());
-            sendStatusMessage(player);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onRightClickEmpty(PlayerInteractEvent.RightClickEmpty event) {
-        Player player = event.getEntity();
-        if (player.getMainHandItem().getItem() != modItems.SUPER_TOOL.get()) return;
-        if (isDebouncing(player)) return;
-        if (player.isCrouching()) {
-            superTool.toggleToolEnabeld(player.getMainHandItem());
-            sendStatusMessage(player);
-        }
-        player.getMainHandItem().set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,
-                superTool.getState(player.getMainHandItem()).isEnabled());
-    }
+    // Fxxking client event!!!
+//    @SubscribeEvent
+//    public static void onLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
+//        Player player = event.getEntity();
+//        ItemStack item = event.getItemStack();
+//        if (item.getItem() != modItems.SUPER_TOOL.get()) return;
+//        if (isDebouncing(player)) return;
+//        if (player.isCrouching()) {
+//            superTool.switchMode(player.getMainHandItem());
+//            sendStatusMessage(player);
+//        }
+//    }
+//
+//    @SubscribeEvent
+//    public static void onRightClickEmpty(PlayerInteractEvent.RightClickEmpty event) {
+//        Player player = event.getEntity();
+//        if (player.getMainHandItem().getItem() != modItems.SUPER_TOOL.get()) return;
+//        if (isDebouncing(player)) return;
+//        if (player.isCrouching()) {
+//            superTool.toggleToolEnabeld(player.getMainHandItem());
+//            sendStatusMessage(player);
+//        }
+//        player.getMainHandItem().set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,
+//                superTool.getState(player.getMainHandItem()).isEnabled());
+//    }
 }
