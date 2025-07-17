@@ -1,6 +1,6 @@
 package com.fish.fishthings.item.customs.superTool;
 
-import com.fish.fishthings.item.modComponents;
+import com.fish.fishthings.modRegisters.ModComponents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 
@@ -11,17 +11,17 @@ public class superTool extends PickaxeItem {
                 .durability(1145)
                 .rarity(Rarity.RARE)
                 .fireResistant()
-                .component(modComponents.SUPER_TOOL_STATE.get(), superToolState.DEFAULT)
+                .component(ModComponents.SUPER_TOOL_STATE.get(), superToolState.DEFAULT)
                 .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, superToolState.DEFAULT.isEnabled())
         );
     }
 
     public static superToolState getState(ItemStack item) {
-        return item.getOrDefault(modComponents.SUPER_TOOL_STATE.get(), superToolState.DEFAULT);
+        return item.getOrDefault(ModComponents.SUPER_TOOL_STATE.get(), superToolState.DEFAULT);
     }
 
     public static void setState(ItemStack item, superToolState state) {
-        item.set(modComponents.SUPER_TOOL_STATE.get(), state);
+        item.set(ModComponents.SUPER_TOOL_STATE.get(), state);
     }
 
     public static superToolState.ToolMode getMode(ItemStack item) {
@@ -32,9 +32,13 @@ public class superTool extends PickaxeItem {
         setState(item, new superToolState(toolMode, getState(item).isEnabled()));
     }
 
-    public static void switchMode(ItemStack item) {
-        setMode(item, getState(item).toolMode() ==
-                superToolState.ToolMode.superTree ? superToolState.ToolMode.superOre : superToolState.ToolMode.superTree);
+    public static void switchMode(ItemStack item, Boolean isDown) {
+        superToolState.ToolMode[] toolModes = superToolState.ToolMode.values();
+        if (isDown) {
+            setMode(item, toolModes[(getMode(item).ordinal() + 1 <= 1 ? getMode(item).ordinal() + 1 : 0)]);
+        } else {
+            setMode(item, toolModes[(getMode(item).ordinal() - 1 >= 0 ? getMode(item).ordinal() - 1 : 1)]);
+        }
     }
 
     public static boolean isToolEnabled(ItemStack item) {
@@ -45,7 +49,7 @@ public class superTool extends PickaxeItem {
         setState(item, new superToolState(getState(item).toolMode(), enabled));
     }
 
-    public static void toggleToolEnabeld(ItemStack item) {
+    public static void toggleToolEnabled(ItemStack item) {
         setToolEnabled(item, !getState(item).isEnabled());
     }
 }

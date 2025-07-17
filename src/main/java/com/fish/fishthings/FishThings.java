@@ -1,7 +1,8 @@
 package com.fish.fishthings;
 
-import com.fish.fishthings.item.modComponents;
-import com.fish.fishthings.item.modItems;
+import com.fish.fishthings.modRegisters.ModCTabs;
+import com.fish.fishthings.modRegisters.ModComponents;
+import com.fish.fishthings.modRegisters.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -25,9 +26,9 @@ public class FishThings {
         NeoForge.EVENT_BUS.register(this);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        modItems.register(modEventBus);
-        creativeTab.register(modEventBus);
-        modComponents.COMPONENTS.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModCTabs.register(modEventBus);
+        ModComponents.COMPONENTS.register(modEventBus);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

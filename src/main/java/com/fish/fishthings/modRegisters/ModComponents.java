@@ -1,4 +1,4 @@
-package com.fish.fishthings.item;
+package com.fish.fishthings.modRegisters;
 
 import com.fish.fishthings.FishThings;
 import com.fish.fishthings.item.customs.superTool.superToolState;
@@ -7,7 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class modComponents {
+public class ModComponents {
     public static final DeferredRegister.DataComponents COMPONENTS =
             DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, FishThings.MODID);
 

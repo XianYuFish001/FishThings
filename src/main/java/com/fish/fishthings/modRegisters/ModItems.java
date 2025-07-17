@@ -1,4 +1,4 @@
-package com.fish.fishthings.item;
+package com.fish.fishthings.modRegisters;
 
 import com.fish.fishthings.FishThings;
 import com.fish.fishthings.item.customs.superTool.superTool;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class modItems {
+public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, FishThings.MODID);
 
     public static final Supplier<Item> SUPER_TOOL = ITEMS.register("super_tool", superTool::new);
