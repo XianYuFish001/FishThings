@@ -70,7 +70,6 @@ public class superToolFunc {
         ItemStack item = event.getItemStack();
         if (item.getItem() != modItems.SUPER_TOOL.get()) return;
         if (superTool.isToolEnabled(player.getMainHandItem())) {
-            player.sendSystemMessage(Component.literal(event.getLevel().isClientSide()?"C":"S"));
             switch (superTool.getMode(player.getMainHandItem())) {
                 case superOre -> superOre.superOreFunc(event.getLevel(), event.getPos(), player, item);
                 case superTree -> superTree.superTreeFunc(event.getLevel(), event.getPos(), player, item);
