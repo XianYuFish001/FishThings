@@ -90,6 +90,18 @@ public class superOre {
         player.sendSystemMessage(Component.translatable("message.item.fish_things.super_tool.superOre.finished", ores.size()));
     }
 
+    static {
+        int index = 0;
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    if (x == 0 && y == 0 && z == 0) continue;
+                    TWENTY_SIX_DIRECTIONS[index++] = new BlockPos(x, y, z);
+                }
+            }
+        }
+    }
+
     private static void breakOre(ServerLevel level, BlockPos pos, Player player, ItemStack tool) {
         BlockState state = level.getBlockState(pos);
         List<ItemStack> drops = Block.getDrops(state, level, pos, null, player, tool);

@@ -1,8 +1,8 @@
-package com.fish.fishthings.handlers;
+package com.fish.fishthings.handler;
 
 import com.fish.fishthings.FishThings;
 import com.fish.fishthings.item.customs.superTool.superTool;
-import com.fish.fishthings.modRegisters.ModItems;
+import com.fish.fishthings.register.ModItems;
 import com.fish.fishthings.network.PacketMouseAction;
 import net.minecraft.client.Minecraft;
 import net.neoforged.bus.api.SubscribeEvent;

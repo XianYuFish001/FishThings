@@ -1,6 +1,6 @@
 package com.fish.fishthings.item.customs.superTool;
 
-import com.fish.fishthings.modRegisters.ModComponents;
+import com.fish.fishthings.register.ModComponents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 

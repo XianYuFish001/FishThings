@@ -1,4 +1,4 @@
-package com.fish.fishthings.modRegisters;
+package com.fish.fishthings.register;
 
 import com.fish.fishthings.FishThings;
 import com.fish.fishthings.item.customs.superTool.superToolState;

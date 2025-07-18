@@ -1,4 +1,4 @@
-package com.fish.fishthings.modRegisters;
+package com.fish.fishthings.register;
 
 import com.fish.fishthings.FishThings;
 import com.fish.fishthings.network.PacketMouseAction;
@@ -18,7 +18,7 @@ public class ModMessages {
             PacketMouseAction.TYPE,
             PacketMouseAction.STREAM_CODEC,
             new DirectionalPayloadHandler<>(
-                    null,
+                    PacketMouseAction::handle,
                     PacketMouseAction::handle
             )
         );

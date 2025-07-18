@@ -31,6 +31,7 @@ public record PacketMouseAction(ActionType action) implements CustomPacketPayloa
     }
 
     public static void handle(final PacketMouseAction packet, final IPayloadContext context){
+        if (context.player().level().isClientSide) return;
         context.enqueueWork(()->{
             Player player = context.player();
             if (!player.isAlive() || player.level().isClientSide) return;

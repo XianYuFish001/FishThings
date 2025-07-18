@@ -1,11 +1,13 @@
 package com.fish.fishthings.item.customs.superTool;
 
 import com.fish.fishthings.FishThings;
-import com.fish.fishthings.modRegisters.ModItems;
+import com.fish.fishthings.register.ModItems;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -51,6 +53,9 @@ public class superToolFunc {
 
     // ClickEvents and fxxking clickEmpty!!!
     public static void leftClickOpt(Player player) {
+        if (player.isCrouching()) {
+            player.move(MoverType.PLAYER, new Vec3(0, 1, 0));
+        }
     }
 
     public static void rightClickOpt(Player player) {

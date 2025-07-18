@@ -1,4 +1,4 @@
-package com.fish.fishthings.modRegisters;
+package com.fish.fishthings.register;
 
 import com.fish.fishthings.FishThings;
 import net.minecraft.core.registries.Registries;
@@ -14,11 +14,15 @@ public class ModCTabs {
 
     public static final String TAB = "ctab.fish_things.maintab";
 
-    public static final Supplier<CreativeModeTab> MAINTAB = CTAB.register("main_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable(TAB))
-            .icon(() -> ModItems.SUPER_TOOL.get().getDefaultInstance())
-            .displayItems((p, o) -> o.accept(ModItems.SUPER_TOOL.get()))
-            .build());
+    public static final Supplier<CreativeModeTab> MAINTAB;
+
+    static {
+        MAINTAB = CTAB.register("main_tab", () -> CreativeModeTab.builder()
+                .title(Component.translatable(TAB))
+                .icon(() -> ModItems.SUPER_TOOL.get().getDefaultInstance())
+                .displayItems((p, o) -> o.accept(ModItems.SUPER_TOOL.get()))
+                .build());
+    }
 
     public static void register(IEventBus eventBus) {
         CTAB.register(eventBus);

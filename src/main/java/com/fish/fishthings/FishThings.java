@@ -1,11 +1,8 @@
 package com.fish.fishthings;
 
-import com.fish.fishthings.modRegisters.ModCTabs;
-import com.fish.fishthings.modRegisters.ModComponents;
-import com.fish.fishthings.modRegisters.ModItems;
-import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
+import com.fish.fishthings.register.ModCTabs;
+import com.fish.fishthings.register.ModComponents;
+import com.fish.fishthings.register.ModItems;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -19,7 +16,6 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 @Mod(FishThings.MODID)
 public class FishThings {
     public static final String MODID = "fish_things";
-    public static final Logger LOGGER = LogUtils.getLogger();
 
     public FishThings(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
